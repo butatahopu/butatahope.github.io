@@ -4,50 +4,81 @@
     <meta charset="UTF-8">
     <title>プレゼントボックス抽選</title>
     <style>
+      /* グローバルなスタイル */
       body {
-        font-family: Arial, sans-serif;
-        background-color: #f9f9f9;
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 16px;
+        color: #333;
+        background-color: #f7f7f7;
+      }
+
+      /* ヘッダー */
+      header {
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        padding: 30px;
       }
 
       h1 {
-        font-size: 24px;
-        font-weight: bold;
-        margin-top: 30px;
-      }
-
-      p {
-        font-size: 16px;
-        margin-bottom: 30px;
-      }
-
-      #present-container {
+        margin: 0;
+        font-size: 36px;
+        font-weight: 700;
         text-align: center;
-        margin-top: 50px;
+      }
+
+      /* プレゼントボックス */
+      #present-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 50px;
       }
 
       .present {
-        width: 100px;
-        height: 100px;
-        margin: 10px;
-        display: inline-block;
-        background-image: url('present.jpg');
+        width: 150px;
+        height: 150px;
+        margin: 20px;
+        background-color: #f9d9e3;
+        background-image: url('https://example.com/present.png');
         background-size: contain;
+        background-repeat: no-repeat;
         cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0,0,0,.1);
+        transition: all .3s ease-in-out;
       }
 
+      .present:hover {
+        transform: translateY(-5px);
+      }
+
+      /* 結果 */
       #result {
-        font-size: 24px;
-        font-weight: bold;
-        margin-top: 30px;
+        font-size: 32px;
+        font-weight: 700;
         text-align: center;
+        margin-top: 50px;
       }
 
       /* ポップアップ用スタイル */
       #popup-message {
-        font-size: 32px;
-        font-weight: bold;
+        font-size: 64px;
+        font-weight: 700;
         text-align: center;
-        margin-top: 50px;
+        margin-top: 100px;
+        animation: pop 1s ease-in-out;
+      }
+
+      @keyframes pop {
+        0% {
+          transform: scale(0);
+        }
+        50% {
+          transform: scale(1.5);
+        }
+        100% {
+          transform: scale(1);
+        }
       }
     </style>
   </head>
