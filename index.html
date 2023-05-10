@@ -2,65 +2,80 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>歌詞の一覧</title>
+    <title>プレゼントボックス抽選</title>
     <style>
       body {
-        background-color: #f9f9f9;
         font-family: Arial, sans-serif;
-        font-size: 16px;
-        line-height: 1.5;
+        background-color: #f9f9f9;
       }
+
       h1 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+
+      p {
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+
+      #present-container {
         text-align: center;
         margin-top: 50px;
       }
-      .song {
-        margin-top: 30px;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+
+      .present {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        background-image: url('present.jpg');
+        background-size: contain;
+        cursor: pointer;
       }
-      .song h2 {
+
+      #result {
         font-size: 24px;
-        margin-bottom: 10px;
+        font-weight: bold;
+        margin-top: 30px;
+        text-align: center;
       }
-      .song p {
-        white-space: pre-wrap;
-        font-size: 18px;
-        line-height: 1.3;
+
+      /* ポップアップ用スタイル */
+      #popup-message {
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 50px;
       }
     </style>
   </head>
   <body>
-    <h1>歌詞の一覧</h1>
-    <div class="song">
-      <h2>曲名1</h2>
-      <p>部屋にあった地球儀　回しながら気づく
-明日もきっと　同じことの繰り返し
-窓から見た景色に夢を預けて
-今日をただ過ごすだけ
-
-意味のある今を　意味のない昨日の
-言い訳だけに使ったり
-退屈な日々を　退屈と嘆く
-あなたに届かない声で
-
-見たことない明日は　いつもの机上から
-時計が変える世界を　僕は歩くのか
-
-語り合った日々は　すぐ近くにあると
-見慣れた街が　忘れさせてく
-憧れた未来が来ると信じられず
-今日もただ眠るだけ
-
-くだらないあの　くだらないあれが
-美しい世界の全てだったり
-もしかして未来は　もしかして未来は
-この今なのかもしれない
-
-見たことない景色は　積み上げたノートから
-時計が変える世界を　僕は歩くのか</p>
+    <h1>プレゼントボックス抽選</h1>
+    <p>プレゼントボックスを選んでください。当たりがあれば「おめでとう！」、ハズレなら「残念！」と表示されます。</p>
+    <div id="present-container">
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
     </div>
+    <div id="result"></div>
+    <script>
+      function checkWin(present) {
+        var randomNum = Math.floor(Math.random() * 9); // 0から8のランダムな数字を生成
+        if (randomNum === 0 && present === document.querySelectorAll('.present')[0]) {
+          var popup = window.open("", "popup", "width=200,height=100");
+          popup.document.write("<div id='popup-message'>おめでとう！</div>");
+        } else {
+          document.getElementById('result').innerHTML = '残念！';
+        }
+      }
+    </script>
   </body>
 </html>
